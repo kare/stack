@@ -8,7 +8,7 @@ func NewInt() *IntStack {
 	return &IntStack{}
 }
 
-// Add a value to stack
+// Push a value to stack
 func (s *IntStack) Push(value int) {
 	(*s) = append([]int{value}, (*s)...)
 }
