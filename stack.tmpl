@@ -22,7 +22,7 @@ func (s *{{.TypeName}}) Pop() {{.Type}} {
 	return value
 }
 
-// Slice returns the stack contents as an {{.Type}} slice.
+// Slice returns the stack contents as a slice of {{.Type}}'s.
 func (s *{{.TypeName}}) Slice() []{{.Type}} {
 	return []{{.Type}}(*s)
 }
