@@ -10,26 +10,34 @@ func NewUint64() *Uint64Stack {
 	return &Uint64Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Uint64Stack) Push(value uint64) {
 	(*s) = append([]uint64{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Uint64Stack) Pop() uint64 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Uint64Stack) Pop() (uint64, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an uint64 slice.
+// Slice returns the stack contents as a slice of uint64's.
 func (s *Uint64Stack) Slice() []uint64 {
 	return []uint64(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Uint64Stack) Peek() uint64 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Uint64Stack) Peek() (uint64, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

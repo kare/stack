@@ -10,26 +10,34 @@ func NewInt16() *Int16Stack {
 	return &Int16Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Int16Stack) Push(value int16) {
 	(*s) = append([]int16{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Int16Stack) Pop() int16 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int16Stack) Pop() (int16, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an int16 slice.
+// Slice returns the stack contents as a slice of int16's.
 func (s *Int16Stack) Slice() []int16 {
 	return []int16(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Int16Stack) Peek() int16 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int16Stack) Peek() (int16, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

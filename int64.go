@@ -10,26 +10,34 @@ func NewInt64() *Int64Stack {
 	return &Int64Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Int64Stack) Push(value int64) {
 	(*s) = append([]int64{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Int64Stack) Pop() int64 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int64Stack) Pop() (int64, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an int64 slice.
+// Slice returns the stack contents as a slice of int64's.
 func (s *Int64Stack) Slice() []int64 {
 	return []int64(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Int64Stack) Peek() int64 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int64Stack) Peek() (int64, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

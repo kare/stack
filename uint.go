@@ -10,26 +10,34 @@ func NewUint() *UintStack {
 	return &UintStack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *UintStack) Push(value uint) {
 	(*s) = append([]uint{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *UintStack) Pop() uint {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *UintStack) Pop() (uint, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an uint slice.
+// Slice returns the stack contents as a slice of uint's.
 func (s *UintStack) Slice() []uint {
 	return []uint(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *UintStack) Peek() uint {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *UintStack) Peek() (uint, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

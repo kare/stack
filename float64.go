@@ -10,26 +10,34 @@ func NewFloat64() *Float64Stack {
 	return &Float64Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Float64Stack) Push(value float64) {
 	(*s) = append([]float64{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Float64Stack) Pop() float64 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Float64Stack) Pop() (float64, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an float64 slice.
+// Slice returns the stack contents as a slice of float64's.
 func (s *Float64Stack) Slice() []float64 {
 	return []float64(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Float64Stack) Peek() float64 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Float64Stack) Peek() (float64, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

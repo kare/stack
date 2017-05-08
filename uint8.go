@@ -10,26 +10,34 @@ func NewUint8() *Uint8Stack {
 	return &Uint8Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Uint8Stack) Push(value uint8) {
 	(*s) = append([]uint8{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Uint8Stack) Pop() uint8 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Uint8Stack) Pop() (uint8, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an uint8 slice.
+// Slice returns the stack contents as a slice of uint8's.
 func (s *Uint8Stack) Slice() []uint8 {
 	return []uint8(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Uint8Stack) Peek() uint8 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Uint8Stack) Peek() (uint8, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

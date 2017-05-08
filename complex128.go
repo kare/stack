@@ -10,26 +10,34 @@ func NewComplex128() *Complex128Stack {
 	return &Complex128Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Complex128Stack) Push(value complex128) {
 	(*s) = append([]complex128{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Complex128Stack) Pop() complex128 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Complex128Stack) Pop() (complex128, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an complex128 slice.
+// Slice returns the stack contents as a slice of complex128's.
 func (s *Complex128Stack) Slice() []complex128 {
 	return []complex128(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Complex128Stack) Peek() complex128 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Complex128Stack) Peek() (complex128, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

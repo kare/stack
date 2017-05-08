@@ -10,26 +10,34 @@ func NewInt8() *Int8Stack {
 	return &Int8Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Int8Stack) Push(value int8) {
 	(*s) = append([]int8{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Int8Stack) Pop() int8 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int8Stack) Pop() (int8, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an int8 slice.
+// Slice returns the stack contents as a slice of int8's.
 func (s *Int8Stack) Slice() []int8 {
 	return []int8(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Int8Stack) Peek() int8 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int8Stack) Peek() (int8, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

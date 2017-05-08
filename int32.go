@@ -10,26 +10,34 @@ func NewInt32() *Int32Stack {
 	return &Int32Stack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *Int32Stack) Push(value int32) {
 	(*s) = append([]int32{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *Int32Stack) Pop() int32 {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int32Stack) Pop() (int32, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an int32 slice.
+// Slice returns the stack contents as a slice of int32's.
 func (s *Int32Stack) Slice() []int32 {
 	return []int32(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *Int32Stack) Peek() int32 {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *Int32Stack) Peek() (int32, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

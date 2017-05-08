@@ -10,26 +10,34 @@ func NewString() *StringStack {
 	return &StringStack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *StringStack) Push(value string) {
 	(*s) = append([]string{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *StringStack) Pop() string {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *StringStack) Pop() (string, error) {
+	if len(*s) == 0 {
+		return "", ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an string slice.
+// Slice returns the stack contents as a slice of string's.
 func (s *StringStack) Slice() []string {
 	return []string(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *StringStack) Peek() string {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *StringStack) Peek() (string, error) {
+	if len(*s) == 0 {
+		return "", ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.

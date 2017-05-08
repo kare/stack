@@ -10,26 +10,34 @@ func NewRune() *RuneStack {
 	return &RuneStack{}
 }
 
-// Push a value to stack
+// Push a value to the stack.
 func (s *RuneStack) Push(value rune) {
 	(*s) = append([]rune{value}, (*s)...)
 }
 
-// Pop removes the most recently added item
-func (s *RuneStack) Pop() rune {
+// Pop removes the most recently added item.
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *RuneStack) Pop() (rune, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
 	value := (*s)[0]
 	(*s) = (*s)[1:]
-	return value
+	return value, nil
 }
 
-// Slice returns the stack contents as an rune slice.
+// Slice returns the stack contents as a slice of rune's.
 func (s *RuneStack) Slice() []rune {
 	return []rune(*s)
 }
 
 // Peek returns the most recently added item.
-func (s *RuneStack) Peek() rune {
-	return (*s)[0]
+// If called on an empty stack will return ErrEmptyStack error.
+func (s *RuneStack) Peek() (rune, error) {
+	if len(*s) == 0 {
+		return 0, ErrEmptyStack
+	}
+	return (*s)[0], nil
 }
 
 // IsEmpty returns true if the stack is empty.
