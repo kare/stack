@@ -2,86 +2,103 @@
     {
         "ShortTypeName": "String",
         "Type": "string",
-        "TypeName": "StringStack"
+        "TypeName": "StringStack",
+        "TypeZeroValue": "\"\""
     },
     {
         "ShortTypeName": "Int",
         "Type": "int",
-        "TypeName": "IntStack"
+        "TypeName": "IntStack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Uint",
         "Type": "uint",
-        "TypeName": "UintStack"
+        "TypeName": "UintStack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Uint8",
         "Type": "uint8",
-        "TypeName": "Uint8Stack"
+        "TypeName": "Uint8Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Uint16",
         "Type": "uint16",
-        "TypeName": "Uint16Stack"
+        "TypeName": "Uint16Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Uint32",
         "Type": "uint32",
-        "TypeName": "Uint32Stack"
+        "TypeName": "Uint32Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Uint64",
         "Type": "uint64",
-        "TypeName": "Uint64Stack"
+        "TypeName": "Uint64Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Int8",
         "Type": "int8",
-        "TypeName": "Int8Stack"
+        "TypeName": "Int8Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Int16",
         "Type": "int16",
-        "TypeName": "Int16Stack"
+        "TypeName": "Int16Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Int32",
         "Type": "int32",
-        "TypeName": "Int32Stack"
+        "TypeName": "Int32Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Int64",
         "Type": "int64",
-        "TypeName": "Int64Stack"
+        "TypeName": "Int64Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Float32",
         "Type": "float32",
-        "TypeName": "Float32Stack"
+        "TypeName": "Float32Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Float64",
         "Type": "float64",
-        "TypeName": "Float64Stack"
+        "TypeName": "Float64Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Complex64",
         "Type": "complex64",
-        "TypeName": "Complex64Stack"
+        "TypeName": "Complex64Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Complex128",
         "Type": "complex128",
-        "TypeName": "Complex128Stack"
+        "TypeName": "Complex128Stack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Byte",
         "Type": "byte",
-        "TypeName": "ByteStack"
+        "TypeName": "ByteStack",
+        "TypeZeroValue": "0"
     },
     {
         "ShortTypeName": "Rune",
         "Type": "rune",
-        "TypeName": "RuneStack"
+        "TypeName": "RuneStack",
+        "TypeZeroValue": "0"
     }
 ]
