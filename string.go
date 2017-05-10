@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// StringStack is a stack data structure.
-type StringStack []string
+// String is a stack data structure.
+type String []string
 
 // NewString creates an empty string stack.
-func NewString() *StringStack {
-	return &StringStack{}
+func NewString() *String {
+	return &String{}
 }
 
 // Push a value to the stack.
-func (s *StringStack) Push(value string) {
+func (s *String) Push(value string) {
 	(*s) = append([]string{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *StringStack) Pop() (string, error) {
+func (s *String) Pop() (string, error) {
 	if len(*s) == 0 {
 		return "", ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *StringStack) Pop() (string, error) {
 }
 
 // Slice returns the stack contents as a slice of string's.
-func (s *StringStack) Slice() []string {
+func (s *String) Slice() []string {
 	return []string(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *StringStack) Peek() (string, error) {
+func (s *String) Peek() (string, error) {
 	if len(*s) == 0 {
 		return "", ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *StringStack) Peek() (string, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *StringStack) IsEmpty() bool {
+func (s *String) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *StringStack) Len() int {
+func (s *String) Len() int {
 	return len(*s)
 }

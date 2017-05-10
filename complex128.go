@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// Complex128Stack is a stack data structure.
-type Complex128Stack []complex128
+// Complex128 is a stack data structure.
+type Complex128 []complex128
 
 // NewComplex128 creates an empty complex128 stack.
-func NewComplex128() *Complex128Stack {
-	return &Complex128Stack{}
+func NewComplex128() *Complex128 {
+	return &Complex128{}
 }
 
 // Push a value to the stack.
-func (s *Complex128Stack) Push(value complex128) {
+func (s *Complex128) Push(value complex128) {
 	(*s) = append([]complex128{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Complex128Stack) Pop() (complex128, error) {
+func (s *Complex128) Pop() (complex128, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *Complex128Stack) Pop() (complex128, error) {
 }
 
 // Slice returns the stack contents as a slice of complex128's.
-func (s *Complex128Stack) Slice() []complex128 {
+func (s *Complex128) Slice() []complex128 {
 	return []complex128(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Complex128Stack) Peek() (complex128, error) {
+func (s *Complex128) Peek() (complex128, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *Complex128Stack) Peek() (complex128, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *Complex128Stack) IsEmpty() bool {
+func (s *Complex128) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *Complex128Stack) Len() int {
+func (s *Complex128) Len() int {
 	return len(*s)
 }

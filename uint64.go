@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// Uint64Stack is a stack data structure.
-type Uint64Stack []uint64
+// Uint64 is a stack data structure.
+type Uint64 []uint64
 
 // NewUint64 creates an empty uint64 stack.
-func NewUint64() *Uint64Stack {
-	return &Uint64Stack{}
+func NewUint64() *Uint64 {
+	return &Uint64{}
 }
 
 // Push a value to the stack.
-func (s *Uint64Stack) Push(value uint64) {
+func (s *Uint64) Push(value uint64) {
 	(*s) = append([]uint64{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Uint64Stack) Pop() (uint64, error) {
+func (s *Uint64) Pop() (uint64, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *Uint64Stack) Pop() (uint64, error) {
 }
 
 // Slice returns the stack contents as a slice of uint64's.
-func (s *Uint64Stack) Slice() []uint64 {
+func (s *Uint64) Slice() []uint64 {
 	return []uint64(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Uint64Stack) Peek() (uint64, error) {
+func (s *Uint64) Peek() (uint64, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *Uint64Stack) Peek() (uint64, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *Uint64Stack) IsEmpty() bool {
+func (s *Uint64) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *Uint64Stack) Len() int {
+func (s *Uint64) Len() int {
 	return len(*s)
 }

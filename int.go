@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// IntStack is a stack data structure.
-type IntStack []int
+// Int is a stack data structure.
+type Int []int
 
 // NewInt creates an empty int stack.
-func NewInt() *IntStack {
-	return &IntStack{}
+func NewInt() *Int {
+	return &Int{}
 }
 
 // Push a value to the stack.
-func (s *IntStack) Push(value int) {
+func (s *Int) Push(value int) {
 	(*s) = append([]int{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *IntStack) Pop() (int, error) {
+func (s *Int) Pop() (int, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *IntStack) Pop() (int, error) {
 }
 
 // Slice returns the stack contents as a slice of int's.
-func (s *IntStack) Slice() []int {
+func (s *Int) Slice() []int {
 	return []int(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *IntStack) Peek() (int, error) {
+func (s *Int) Peek() (int, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *IntStack) Peek() (int, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *IntStack) IsEmpty() bool {
+func (s *Int) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *IntStack) Len() int {
+func (s *Int) Len() int {
 	return len(*s)
 }

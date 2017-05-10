@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// Int8Stack is a stack data structure.
-type Int8Stack []int8
+// Int8 is a stack data structure.
+type Int8 []int8
 
 // NewInt8 creates an empty int8 stack.
-func NewInt8() *Int8Stack {
-	return &Int8Stack{}
+func NewInt8() *Int8 {
+	return &Int8{}
 }
 
 // Push a value to the stack.
-func (s *Int8Stack) Push(value int8) {
+func (s *Int8) Push(value int8) {
 	(*s) = append([]int8{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Int8Stack) Pop() (int8, error) {
+func (s *Int8) Pop() (int8, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *Int8Stack) Pop() (int8, error) {
 }
 
 // Slice returns the stack contents as a slice of int8's.
-func (s *Int8Stack) Slice() []int8 {
+func (s *Int8) Slice() []int8 {
 	return []int8(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Int8Stack) Peek() (int8, error) {
+func (s *Int8) Peek() (int8, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *Int8Stack) Peek() (int8, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *Int8Stack) IsEmpty() bool {
+func (s *Int8) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *Int8Stack) Len() int {
+func (s *Int8) Len() int {
 	return len(*s)
 }

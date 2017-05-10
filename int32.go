@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// Int32Stack is a stack data structure.
-type Int32Stack []int32
+// Int32 is a stack data structure.
+type Int32 []int32
 
 // NewInt32 creates an empty int32 stack.
-func NewInt32() *Int32Stack {
-	return &Int32Stack{}
+func NewInt32() *Int32 {
+	return &Int32{}
 }
 
 // Push a value to the stack.
-func (s *Int32Stack) Push(value int32) {
+func (s *Int32) Push(value int32) {
 	(*s) = append([]int32{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Int32Stack) Pop() (int32, error) {
+func (s *Int32) Pop() (int32, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *Int32Stack) Pop() (int32, error) {
 }
 
 // Slice returns the stack contents as a slice of int32's.
-func (s *Int32Stack) Slice() []int32 {
+func (s *Int32) Slice() []int32 {
 	return []int32(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Int32Stack) Peek() (int32, error) {
+func (s *Int32) Peek() (int32, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *Int32Stack) Peek() (int32, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *Int32Stack) IsEmpty() bool {
+func (s *Int32) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *Int32Stack) Len() int {
+func (s *Int32) Len() int {
 	return len(*s)
 }

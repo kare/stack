@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// Int64Stack is a stack data structure.
-type Int64Stack []int64
+// Int64 is a stack data structure.
+type Int64 []int64
 
 // NewInt64 creates an empty int64 stack.
-func NewInt64() *Int64Stack {
-	return &Int64Stack{}
+func NewInt64() *Int64 {
+	return &Int64{}
 }
 
 // Push a value to the stack.
-func (s *Int64Stack) Push(value int64) {
+func (s *Int64) Push(value int64) {
 	(*s) = append([]int64{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Int64Stack) Pop() (int64, error) {
+func (s *Int64) Pop() (int64, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *Int64Stack) Pop() (int64, error) {
 }
 
 // Slice returns the stack contents as a slice of int64's.
-func (s *Int64Stack) Slice() []int64 {
+func (s *Int64) Slice() []int64 {
 	return []int64(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Int64Stack) Peek() (int64, error) {
+func (s *Int64) Peek() (int64, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *Int64Stack) Peek() (int64, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *Int64Stack) IsEmpty() bool {
+func (s *Int64) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *Int64Stack) Len() int {
+func (s *Int64) Len() int {
 	return len(*s)
 }

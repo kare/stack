@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// RuneStack is a stack data structure.
-type RuneStack []rune
+// Rune is a stack data structure.
+type Rune []rune
 
 // NewRune creates an empty rune stack.
-func NewRune() *RuneStack {
-	return &RuneStack{}
+func NewRune() *Rune {
+	return &Rune{}
 }
 
 // Push a value to the stack.
-func (s *RuneStack) Push(value rune) {
+func (s *Rune) Push(value rune) {
 	(*s) = append([]rune{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *RuneStack) Pop() (rune, error) {
+func (s *Rune) Pop() (rune, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *RuneStack) Pop() (rune, error) {
 }
 
 // Slice returns the stack contents as a slice of rune's.
-func (s *RuneStack) Slice() []rune {
+func (s *Rune) Slice() []rune {
 	return []rune(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *RuneStack) Peek() (rune, error) {
+func (s *Rune) Peek() (rune, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *RuneStack) Peek() (rune, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *RuneStack) IsEmpty() bool {
+func (s *Rune) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *RuneStack) Len() int {
+func (s *Rune) Len() int {
 	return len(*s)
 }

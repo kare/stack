@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// ByteStack is a stack data structure.
-type ByteStack []byte
+// Byte is a stack data structure.
+type Byte []byte
 
 // NewByte creates an empty byte stack.
-func NewByte() *ByteStack {
-	return &ByteStack{}
+func NewByte() *Byte {
+	return &Byte{}
 }
 
 // Push a value to the stack.
-func (s *ByteStack) Push(value byte) {
+func (s *Byte) Push(value byte) {
 	(*s) = append([]byte{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *ByteStack) Pop() (byte, error) {
+func (s *Byte) Pop() (byte, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *ByteStack) Pop() (byte, error) {
 }
 
 // Slice returns the stack contents as a slice of byte's.
-func (s *ByteStack) Slice() []byte {
+func (s *Byte) Slice() []byte {
 	return []byte(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *ByteStack) Peek() (byte, error) {
+func (s *Byte) Peek() (byte, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *ByteStack) Peek() (byte, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *ByteStack) IsEmpty() bool {
+func (s *Byte) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *ByteStack) Len() int {
+func (s *Byte) Len() int {
 	return len(*s)
 }

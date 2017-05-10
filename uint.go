@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// UintStack is a stack data structure.
-type UintStack []uint
+// Uint is a stack data structure.
+type Uint []uint
 
 // NewUint creates an empty uint stack.
-func NewUint() *UintStack {
-	return &UintStack{}
+func NewUint() *Uint {
+	return &Uint{}
 }
 
 // Push a value to the stack.
-func (s *UintStack) Push(value uint) {
+func (s *Uint) Push(value uint) {
 	(*s) = append([]uint{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *UintStack) Pop() (uint, error) {
+func (s *Uint) Pop() (uint, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *UintStack) Pop() (uint, error) {
 }
 
 // Slice returns the stack contents as a slice of uint's.
-func (s *UintStack) Slice() []uint {
+func (s *Uint) Slice() []uint {
 	return []uint(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *UintStack) Peek() (uint, error) {
+func (s *Uint) Peek() (uint, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *UintStack) Peek() (uint, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *UintStack) IsEmpty() bool {
+func (s *Uint) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *UintStack) Len() int {
+func (s *Uint) Len() int {
 	return len(*s)
 }

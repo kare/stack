@@ -2,22 +2,22 @@
 
 package stack // import "kkn.fi/stack"
 
-// Float64Stack is a stack data structure.
-type Float64Stack []float64
+// Float64 is a stack data structure.
+type Float64 []float64
 
 // NewFloat64 creates an empty float64 stack.
-func NewFloat64() *Float64Stack {
-	return &Float64Stack{}
+func NewFloat64() *Float64 {
+	return &Float64{}
 }
 
 // Push a value to the stack.
-func (s *Float64Stack) Push(value float64) {
+func (s *Float64) Push(value float64) {
 	(*s) = append([]float64{value}, (*s)...)
 }
 
 // Pop removes the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Float64Stack) Pop() (float64, error) {
+func (s *Float64) Pop() (float64, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -27,13 +27,13 @@ func (s *Float64Stack) Pop() (float64, error) {
 }
 
 // Slice returns the stack contents as a slice of float64's.
-func (s *Float64Stack) Slice() []float64 {
+func (s *Float64) Slice() []float64 {
 	return []float64(*s)
 }
 
 // Peek returns the most recently added item.
 // If called on an empty stack will return ErrEmptyStack error.
-func (s *Float64Stack) Peek() (float64, error) {
+func (s *Float64) Peek() (float64, error) {
 	if len(*s) == 0 {
 		return 0, ErrEmptyStack
 	}
@@ -41,11 +41,11 @@ func (s *Float64Stack) Peek() (float64, error) {
 }
 
 // IsEmpty returns true if the stack is empty.
-func (s *Float64Stack) IsEmpty() bool {
+func (s *Float64) IsEmpty() bool {
 	return len(*s) == 0
 }
 
 // Len returns the number of items in the stack.
-func (s *Float64Stack) Len() int {
+func (s *Float64) Len() int {
 	return len(*s)
 }
