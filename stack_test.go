@@ -3,31 +3,31 @@ package stack
 import "testing"
 
 func TestIntStackSimple(t *testing.T) {
-	stack := NewInt()
-	stack.Push(1)
-	l := stack.Len()
+	s := New[int]()
+	s.Push(1)
+	l := s.Len()
 	if l != 1 {
 		t.Errorf("Stack Len() should be 1, but was %v", l)
 	}
-	value, _ := stack.Pop()
+	value, _ := s.Pop()
 	expected := 1
 	if value != expected {
 		t.Errorf("Stack should have returned %v, but returned %v", expected, value)
 	}
-	l = stack.Len()
+	l = s.Len()
 	if l != 0 {
 		t.Errorf("Stack Len() should be 0, but was %v", l)
 	}
 }
 
 func TestIntStackFiveValues(t *testing.T) {
-	stack := NewInt()
+	s := New[int]()
 	for i := 0; i < 5; i++ {
-		stack.Push(i)
+		s.Push(i)
 	}
 
 	for i := 4; i >= 0; i-- {
-		value, _ := stack.Pop()
+		value, _ := s.Pop()
 		expected := i
 		if value != expected {
 			t.Errorf("Stack should have returned %v, but returned %v", expected, value)
@@ -36,46 +36,46 @@ func TestIntStackFiveValues(t *testing.T) {
 }
 
 func TestIntStackPopEmpty(t *testing.T) {
-	stack := NewInt()
-	zero, err := stack.Pop()
+	s := New[int]()
+	zero, err := s.Pop()
 	if err.Error() != "stack is empty" {
 		t.Errorf("expected peek to return an error, but got %d, %v", zero, err)
 	}
 }
 
 func TestIntStackIsEmpty(t *testing.T) {
-	stack := NewInt()
-	if !stack.IsEmpty() {
-		t.Errorf("Expected an empty stack, but got: %v", stack)
+	s := New[int]()
+	if !s.IsEmpty() {
+		t.Errorf("Expected an empty stack, but got: %v", s)
 	}
-	stack.Push(1)
-	if stack.IsEmpty() {
+	s.Push(1)
+	if s.IsEmpty() {
 		t.Error("Did not expect an empty stack, but it was empty")
 	}
 }
 
 func TestIntStackPeek(t *testing.T) {
-	stack := NewInt()
-	stack.Push(1)
-	one, _ := stack.Peek()
+	s := New[int]()
+	s.Push(1)
+	one, _ := s.Peek()
 	if one != 1 {
 		t.Errorf("expected peek to return 1, but got %d", one)
 	}
 }
 
 func TestIntStackPeekEmpty(t *testing.T) {
-	stack := NewInt()
-	zero, err := stack.Peek()
+	s := New[int]()
+	zero, err := s.Peek()
 	if err.Error() != "stack is empty" {
 		t.Errorf("expected peek to return an error, but got %d, %v", zero, err)
 	}
 }
 
 func TestIntStackSlice(t *testing.T) {
-	stack := NewInt()
-	stack.Push(1)
-	stack.Push(2)
-	slice := stack.Slice()
+	s := New[int]()
+	s.Push(1)
+	s.Push(2)
+	slice := s.Slice()
 	if slice[0] != 2 {
 		t.Errorf("expected slice[0] to equal %d", 2)
 	}
