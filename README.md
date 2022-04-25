@@ -1,8 +1,7 @@
 
 # Stack
 
-[![Build Status](https://travis-ci.org/kare/stack.svg?branch=master)](https://travis-ci.org/kare/stack)
-[![GoDoc](https://godoc.org/kkn.fi/stack?status.svg)](https://godoc.org/kkn.fi/stack)
+[![GoDoc](https://pkg.go.dev/badge/kkn.fi/stack)](https://pkg.go.dev/kkn.fi/stack)
 
 ## License
 
