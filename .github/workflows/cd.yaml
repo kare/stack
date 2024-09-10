@@ -1,0 +1,18 @@
+---
+name: CD
+defaults:
+  run:
+    shell: bash
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+on:
+  release:
+    types:
+      - created
+jobs:
+  released:
+    uses: kare/github/.github/workflows/go-release.yaml@main
+    with:
+      go_module_path: kkn.fi/stack
+      version: ${{ github.event.release.tag_name }}
